@@ -51,7 +51,7 @@ sudo tee <<EOF >/dev/null /etc/systemd/system/vmagent.service
   Type=simple
   ExecStart=$HOME/vmagent-prod \
   -promscrape.config=/etc/prometheus/prometheus.yml \
-  -remoteWrite.url=http://cryptologynodes:cryptologynodes@cryptologynodesgrafana.net:8080/api/v1/write
+  -remoteWrite.url=http://cryptology:cryptology@cryptologynodes.grafana.net:8080/api/v1/write
   ExecReload=/bin/kill -HUP $MAINPID
 [Install]
   WantedBy=multi-user.target
