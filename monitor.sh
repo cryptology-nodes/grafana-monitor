@@ -16,27 +16,30 @@ if [ -f "$bash_profile" ]; then
     . $HOME/.bash_profile
 fi
 
-# update and install new packages
+#update and install new packages
+echo -e '\n\e[42mUpdate and install new packages\e[0m\n' && sleep 1
 sudo apt update
 sudo apt install \
     ca-certificates \
     gnupg \
     lsb-release
 # add docker gpg keys
+echo -e '\n\e[42m add docker gpg keys\e[0m\n' && sleep 1
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 #add docker stable repo
-
+echo -e '\n\e[42m add docker gpg keys \e[0m\n' && sleep 1
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 #update and install docker
-
+echo -e '\n\e[42m update and install docker \e[0m\n' && sleep 1
 sudo apt update
 sudo apt install docker-ce docker-ce-cli containerd.io
 apt  install docker-compose
 
 #install node exporter
+echo -e '\n\e[42m install node exporter \e[0m\n' && sleep 1
 touch
 cat << EOF >> docker-compose.yml
 version: '3.3'
@@ -65,9 +68,9 @@ services:
     ports:
       - 9100:9100
     networks:
-      - monitoring"
-      > docker-compose.yml
+      - monitoring
 EOF
 #start docker image
-docker-compose up -d
+echo -e '\n\e[42m start docker image \e[0m\n' && sleep 1
 
+docker-compose up -d
