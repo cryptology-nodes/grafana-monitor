@@ -37,8 +37,8 @@ sudo apt install docker-ce docker-ce-cli containerd.io
 apt  install docker-compose
 
 #install node exporter
-touch docker-compose.yml
-echo "
+touch
+cat << EOF >> docker-compose.yml
 version: '3.3'
 
 networks:
@@ -67,6 +67,7 @@ services:
     networks:
       - monitoring"
       > docker-compose.yml
+EOF
 #start docker image
 docker-compose up -d
 
