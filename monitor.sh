@@ -66,7 +66,7 @@ services:
       - 9100:9100
     networks:
       - monitoring"
-      >> docker-compose.yml
+      > docker-compose.yml
 #start docker image
 docker-compose up -d
 
